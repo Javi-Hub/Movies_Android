@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".movies.resumeMovie.view.ResumeMovieActivity"
+    android:background="@color/background_row"
+    android:weightSum="100">
+
+
+    <ImageView
+        android:id="@+id/imgResumeMovie"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_marginTop="@dimen/spaceBetween"
+        />
+
+    <TextView
+        android:id="@+id/txtResumeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:layout_marginTop="@dimen/spaceBetween"
+        android:gravity="center"
+        android:fontFamily="@string/font_family"
+        android:text="@string/title"
+        android:autoSizeTextType="uniform"
+        android:textColor="@color/title"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/txtResumeDate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/date"
+            android:textSize="@dimen/textResume"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/txtResumeRate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/rate"
+            android:textSize="@dimen/textResume"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/txtResumeLanguage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/language"
+            android:textSize="@dimen/textResume"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txtResumeVote"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/vote"
+            android:textSize="@dimen/textResume"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtResumePlot"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:text="@string/plot"
+        android:textSize="@dimen/textResume"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/txtResumeOverview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30"
+        android:gravity="center"
+        android:autoSizeTextType="uniform"
+        android:text="TextView" />
+
+</LinearLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/rowFilterMovie"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@color/background_row"
+    android:weightSum="100"
+    android:layout_margin="10dp">
+
+    <ImageView
+        android:id="@+id/imgFilterMovie"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="34"
+        android:scaleType="fitXY"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="66"
+        android:layout_height="match_parent"
+        android:background="@color/background_row"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/txtFilterTitle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:fontFamily="@string/font_family"
+            android:gravity="center_vertical"
+            android:padding="@dimen/row_padding"
+            android:text="@string/title"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/title"/>
+
+        <TextView
+            android:id="@+id/txtFilterDate"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:fontFamily="@string/font_family"
+            android:gravity="center_vertical"
+            android:padding="@dimen/row_padding"
+            android:text="@string/date"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/txtFilterRate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@string/font_family"
+                android:gravity="center_vertical"
+                android:padding="@dimen/row_padding"
+                android:text="@string/rate"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/txtFilterVote"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@string/font_family"
+                android:gravity="center_vertical"
+                android:padding="@dimen/row_padding"
+                android:text="@string/vote"
+                android:autoSizeTextType="uniform"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

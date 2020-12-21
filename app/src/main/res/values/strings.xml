@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Movies</string>
+    <string name="font_family">monospace</string>
+    <string name="title">Título</string>
+    <string name="date">Fecha</string>
+    <string name="rate">Valoración</string>
+    <string name="vote">Votos</string>
+    <string name="language">Idioma</string>
+    <string name="plot">Argumento</string>
+    <string name="filter">Filtro</string>
+
+    <string-array name="lstSpinner">
+        <item>Todas las películas</item>
+        <item>Mejor Valoradas</item>
+        <item>Mas Votadas</item>
+    </string-array>
+
+</resources>
