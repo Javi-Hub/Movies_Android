@@ -129,7 +129,7 @@ public class Movie {
         Collections.sort(list, new Comparator<Movie>() {
             @Override
             public int compare(Movie movie_1, Movie movie_2) {
-                // Aqui esta el truco, ahora comparamos p2 con p1 y no al reves como antes
+                // Aqui esta el truco, ahora comparamos movie_2 con movie_1
                 return new Integer(movie_2.getVote()).compareTo(new Integer(movie_1.getVote()));
             }
         });
