@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".movies.filter.view.FilterMoviesActivity"
-    android:background="@color/background_list"
+    android:background="@color/recyclerview_background"
     android:weightSum="100">
 
     <LinearLayout

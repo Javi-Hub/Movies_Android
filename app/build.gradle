@@ -17,7 +17,15 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            buildConfigField "String", "SEVER_URL", '"https://api.themoviedb.org/3/movie/popular?" +\n' +
+                    '                    "api_key=f60067a1481cd9254310b37a0022dbd7&language=en-US&page=1"'
+        }
+
         release {
+            buildConfigField "String", "SEVER_URL", '"https://api.themoviedb.org/3/movie/popular?" +\n' +
+                    '                    "api_key=f60067a1481cd9254310b37a0022dbd7&language=en-US&page=1"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -38,4 +46,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    def material_version = "1.3.0"
+    implementation "com.google.android.material:material:$material_version"
 }

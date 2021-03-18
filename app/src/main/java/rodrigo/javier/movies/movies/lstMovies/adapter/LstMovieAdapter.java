@@ -10,9 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.CharacterData;
 
 import java.util.ArrayList;
 
@@ -33,23 +36,22 @@ public class LstMovieAdapter extends RecyclerView.Adapter<LstMovieAdapter.MovieV
     public static class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // Context
         public Context context;
-        public LinearLayout rowMovie;
+        public CardView rowMovie;
         public ImageView img;
         public TextView title;
         public TextView date;
         public TextView rate;
         public TextView vote;
 
-
         public MovieViewHolder(View v){
             super(v);
             context = v.getContext();
-            rowMovie = (LinearLayout) v.findViewById(R.id.rowMovie);
-            img = (ImageView) v.findViewById(R.id.imgMovie);
-            title = (TextView) v.findViewById(R.id.txtTitle);
-            date = (TextView) v.findViewById(R.id.txtDate);
-            rate = (TextView) v.findViewById(R.id.txtRate);
-            vote = (TextView) v.findViewById(R.id.txtVote);
+            rowMovie = v.findViewById(R.id.card_movie);
+            img = v.findViewById(R.id.card_movie_image);
+            title = v.findViewById(R.id.card_movie_title);
+            date = v.findViewById(R.id.card_movie_date);
+            rate = v.findViewById(R.id.card_movie_rate);
+            vote = v.findViewById(R.id.card_movie_vote);
 
         }
         

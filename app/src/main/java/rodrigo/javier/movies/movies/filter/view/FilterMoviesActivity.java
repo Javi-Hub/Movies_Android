@@ -74,13 +74,6 @@ public class FilterMoviesActivity extends AppCompatActivity implements FilterMov
             }
         });
 
-        // Obtener el Recycler
-        recyclerFilterMovies = findViewById(R.id.recyclerFilterMovies);
-        recyclerFilterMovies.setHasFixedSize(true);
-
-        //Usar el administrador para LinearLayout
-        lManager = new LinearLayoutManager(this);
-        recyclerFilterMovies.setLayoutManager(lManager);
 
     }
 
@@ -107,9 +100,16 @@ public class FilterMoviesActivity extends AppCompatActivity implements FilterMov
 
     public void showListFilter(ArrayList<Movie> movies){
         FilterMoviesAdapter adapter = new FilterMoviesAdapter(movies);
+
+        lManager = new LinearLayoutManager(this);
+
         recyclerFilterMovies = (RecyclerView) findViewById(R.id.recyclerFilterMovies);
+        recyclerFilterMovies.setHasFixedSize(true);
+        recyclerFilterMovies.setLayoutManager(lManager);
+
         divider = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerFilterMovies.addItemDecoration(divider);
+
         recyclerFilterMovies.setAdapter(adapter);
     }
 }

@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -36,7 +37,7 @@ public class FilterMoviesAdapter extends RecyclerView.Adapter<FilterMoviesAdapte
     public static class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // Context
         public Context context;
-        public LinearLayout rowFilterMovie;
+        public CardView rowMovie;
         public ImageView img;
         public TextView title;
         public TextView date;
@@ -46,12 +47,12 @@ public class FilterMoviesAdapter extends RecyclerView.Adapter<FilterMoviesAdapte
         public MovieViewHolder(View v){
             super(v);
             context = v.getContext();
-            rowFilterMovie = (LinearLayout) v.findViewById(R.id.rowFilterMovie);
-            img = (ImageView) v.findViewById(R.id.imgFilterMovie);
-            title = (TextView) v.findViewById(R.id.txtFilterTitle);
-            date = (TextView) v.findViewById(R.id.txtFilterDate);
-            rate = (TextView) v.findViewById(R.id.txtFilterRate);
-            vote = (TextView) v.findViewById(R.id.txtFilterVote);
+            rowMovie = (CardView) v.findViewById(R.id.card_movie);
+            img = (ImageView) v.findViewById(R.id.card_movie_image);
+            title = (TextView) v.findViewById(R.id.card_movie_title);
+            date = (TextView) v.findViewById(R.id.card_movie_date);
+            rate = (TextView) v.findViewById(R.id.card_movie_rate);
+            vote = (TextView) v.findViewById(R.id.card_movie_vote);
             v.setOnClickListener(this);
         }
 
@@ -70,7 +71,7 @@ public class FilterMoviesAdapter extends RecyclerView.Adapter<FilterMoviesAdapte
     @NonNull
     @Override
     public FilterMoviesAdapter.MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_filter_movie, parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_movie, parent,false);
         return new FilterMoviesAdapter.MovieViewHolder(v);
     }
 

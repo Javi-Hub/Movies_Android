@@ -28,9 +28,9 @@
         android:layout_marginTop="@dimen/spaceBetween"
         android:gravity="center"
         android:fontFamily="@string/font_family"
-        android:text="@string/title"
+        android:text="@string/card_movie_title"
         android:autoSizeTextType="uniform"
-        android:textColor="@color/title"/>
+        android:textColor="@color/black"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/date"
+            android:text="@string/card_movie_date"
             android:textSize="@dimen/textResume"
             android:textColor="@color/black"/>
 
@@ -105,6 +105,7 @@
         android:layout_weight="30"
         android:gravity="center"
         android:autoSizeTextType="uniform"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/black"/>
 
 </LinearLayout>
