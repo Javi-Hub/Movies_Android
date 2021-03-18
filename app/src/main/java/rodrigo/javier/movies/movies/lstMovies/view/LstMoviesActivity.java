@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 import rodrigo.javier.movies.R;
 import rodrigo.javier.movies.beans.Movie;
-import rodrigo.javier.movies.movies.filter.view.FilterMoviesActivity;
 import rodrigo.javier.movies.movies.lstMovies.contract.LstMoviesContract;
 import rodrigo.javier.movies.movies.lstMovies.presenter.LstMoviesPresenter;
 

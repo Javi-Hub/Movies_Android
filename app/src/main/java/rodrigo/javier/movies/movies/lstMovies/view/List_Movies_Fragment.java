@@ -44,9 +44,9 @@ public class List_Movies_Fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
+        if (getArguments() != null)
             movies = (ArrayList<Movie>) getArguments().getSerializable(MOVIES);
-        }
+
     }
 
     @Override

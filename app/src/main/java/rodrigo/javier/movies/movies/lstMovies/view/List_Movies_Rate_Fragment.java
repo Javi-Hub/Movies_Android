@@ -32,7 +32,6 @@ public class List_Movies_Rate_Fragment extends Fragment {
     public List_Movies_Rate_Fragment() {
     }
 
-    // TODO: Rename and change types and number of parameters
     public static List_Movies_Rate_Fragment newInstance(ArrayList<Movie> movies) {
         List_Movies_Rate_Fragment fragment = new List_Movies_Rate_Fragment();
         Bundle args = new Bundle();
@@ -52,7 +51,7 @@ public class List_Movies_Rate_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_list_movies, container, false);
+        view = inflater.inflate(R.layout.fragment_list_movies_rate, container, false);
         initComponents();
         Movie.getListFilterRate(movies);
         loadingList(movies);

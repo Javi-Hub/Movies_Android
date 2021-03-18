@@ -55,7 +55,7 @@ public class List_Movies_Votes_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_list_movies, container, false);
+        view = inflater.inflate(R.layout.fragment_list_movies_vote, container, false);
         initComponents();
         Movie.getListFilterVote(movies);
         loadingList(movies);
