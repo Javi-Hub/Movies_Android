@@ -1,17 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
 
     android:background="@color/recyclerview_background"
     tools:context=".movies.lstMovies.view.LstMoviesActivity">
 
+    <!--FRAMELAYOUT-->
+    <FrameLayout
+        android:id="@+id/activity_lst_movies_fragment_container"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </FrameLayout>
+
+    <!--NAVIGATION-->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/activity_lst_movies_bottom_navigation"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation_menu"
+        app:itemBackground="@color/card_movie_text_color"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <!--LAYOUT ERROR-->
     <LinearLayout
-        android:id="@+id/header_list_movies"
+        android:id="@+id/activity_lst_movies_error_loading"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_text_load_data"
+            android:gravity="center"
+            android:textSize="@dimen/card_movie_title"
+            android:fontFamily="@string/font_family"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/button_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_button_retry"
+            android:layout_marginTop="8dp"/>
+
+
+    </LinearLayout>
+
+    <!--LOADING PROGRESSBAR-->
+    <ProgressBar
+        android:id="@+id/activity_lst_movies_loading_progressBar"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyle"/>
+
+</RelativeLayout>
+
+    <!--HEADER-->
+    <!--<LinearLayout
+        android:id="@+id/activity_lst_movies_header"
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,47 +100,4 @@
             android:entries="@array/lstSpinner"
             android:outlineSpotShadowColor="@color/black" />
 
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_error"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/error_text_load_data"
-            android:gravity="center"
-            android:textSize="@dimen/card_movie_title"
-            android:fontFamily="@string/font_family"
-            android:textStyle="bold"/>
-
-        <Button
-            android:id="@+id/error_button_retry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/error_button_retry"
-            android:layout_marginTop="8dp"/>
-
-
-    </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/error_progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="?android:attr/progressBarStyle"/>
-
-</LinearLayout>
+    </LinearLayout>-->

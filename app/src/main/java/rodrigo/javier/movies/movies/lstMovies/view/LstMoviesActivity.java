@@ -1,10 +1,11 @@
 package rodrigo.javier.movies.movies.lstMovies.view;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +14,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -27,12 +30,11 @@ public class LstMoviesActivity
         {
             private LstMoviesPresenter lstMoviesPresenter;
 
-            private LinearLayout header;
-            private Spinner spinFilter;
             private FrameLayout frame_container;
             private LinearLayout errorLayout;
             private ProgressBar progressBar;
             private Button retryButton;
+            private BottomNavigationView nav;
 
             private ArrayList<Movie> movies;
 
@@ -41,11 +43,82 @@ public class LstMoviesActivity
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_lst_movies);
                 initComponents();
+                initBottomNavigation();
                 //Comunicar con la clase Presenter desde el View
                 lstMoviesPresenter = new LstMoviesPresenter(this);
                 lstMoviesPresenter.getMovies();
 
-                //Adaptador para capturar la selección desde el Spinner
+                retryButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        progressBar.setVisibility(View.VISIBLE);
+                        errorLayout.setVisibility(View.GONE);
+                        //header.setVisibility(View.GONE);
+                        frame_container.setVisibility(View.GONE);
+                        lstMoviesPresenter.getMovies();
+                    }
+                });
+
+            }
+
+            @Override
+            public void success(ArrayList<Movie> movies) {
+                progressBar.setVisibility(View.GONE);
+                errorLayout.setVisibility(View.GONE);
+                frame_container.setVisibility(View.VISIBLE);
+                nav.setVisibility(View.VISIBLE);
+                this.movies = movies;
+                setFragment(List_Movies_Fragment.newInstance(movies));
+            }
+
+            @Override
+            public void error(String message) {
+                progressBar.setVisibility(View.GONE);
+                errorLayout.setVisibility(View.VISIBLE);
+                frame_container.setVisibility(View.GONE);
+                nav.setVisibility(View.GONE);
+            }
+
+            public void initComponents(){
+                frame_container = findViewById(R.id.activity_lst_movies_fragment_container);
+                errorLayout = findViewById(R.id.activity_lst_movies_error_loading);
+                progressBar = findViewById(R.id.activity_lst_movies_loading_progressBar);
+                retryButton = findViewById(R.id.button_retry);
+                nav = findViewById(R.id.activity_lst_movies_bottom_navigation);
+            }
+
+            public void setFragment(Fragment fragment){
+                getSupportFragmentManager().beginTransaction().replace(R.id.activity_lst_movies_fragment_container, fragment).commit();
+            }
+
+            public void initBottomNavigation(){
+                nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.menu_nav_all_movies:
+                                setFragment(List_Movies_Fragment.newInstance(new ArrayList<>(movies)));
+                                break;
+                            case R.id.menu_nav_rate_movies:
+                                setFragment(List_Movies_Rate_Fragment.newInstance(new ArrayList<>(movies)));
+                                break;
+                            case R.id.menu_nav_vote_movies:
+                                setFragment(List_Movies_Votes_Fragment.newInstance(new ArrayList<>(movies)));
+                                break;
+                        }
+
+                        return false;
+                    }
+                });
+            }
+
+        }
+
+//private LinearLayout header;
+//private Spinner spinFilter;
+
+//*************** En el onCreate **********************
+/*//Adaptador para capturar la selección desde el Spinner
                 ArrayAdapter<CharSequence> spAdapter = ArrayAdapter.createFromResource(this,
                         R.array.lstSpinner, android.R.layout.simple_spinner_dropdown_item);
                 spinFilter.setAdapter(spAdapter);
@@ -69,52 +142,16 @@ public class LstMoviesActivity
                     public void onNothingSelected(AdapterView<?> parent) {
 
                     }
-                });
+                });*/
 
-                retryButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        progressBar.setVisibility(View.VISIBLE);
-                        errorLayout.setVisibility(View.GONE);
-                        header.setVisibility(View.GONE);
-                        frame_container.setVisibility(View.GONE);
-                    }
-                });
+//************ En el success***************
+//header.setVisibility(View.VISIBLE);
 
-            }
-
-            @Override
-            public void success(ArrayList<Movie> movies) {
-                progressBar.setVisibility(View.GONE);
-                errorLayout.setVisibility(View.GONE);
-                header.setVisibility(View.VISIBLE);
-                frame_container.setVisibility(View.VISIBLE);
-                this.movies = movies;
-                setFragment(List_Movies_Fragment.newInstance(movies));
-            }
-
-            @Override
-            public void error(String message) {
-                progressBar.setVisibility(View.GONE);
-                errorLayout.setVisibility(View.VISIBLE);
-                header.setVisibility(View.GONE);
-                frame_container.setVisibility(View.GONE);
-
-                /*Toast.makeText(this, "Fallo conexión con el servidor," +
+//***************En el error **********
+//header.setVisibility(View.GONE);
+/*Toast.makeText(this, "Fallo conexión con el servidor," +
                         " al cargar el listado de peliculas", Toast.LENGTH_SHORT).show();*/
-            }
 
-            public void initComponents(){
-                spinFilter = (Spinner) findViewById(R.id.spinFilter);
-                header = findViewById(R.id.header_list_movies);
-                frame_container = findViewById(R.id.fragment_container);
-                errorLayout = findViewById(R.id.layout_error);
-                progressBar = findViewById(R.id.error_progressBar);
-                retryButton = findViewById(R.id.error_button_retry);
-            }
-
-            public void setFragment(Fragment fragment){
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-            }
-
-        }
+//********** En el initComponents ***************
+//spinFilter = (Spinner) findViewById(R.id.spinFilter);
+//header = findViewById(R.id.activity_lst_movies_header);

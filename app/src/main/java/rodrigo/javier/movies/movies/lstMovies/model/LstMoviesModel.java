@@ -41,12 +41,12 @@ public class LstMoviesModel implements LstMoviesContract.Model {
                         JSONObject objectMovies = post.getServerDataGetObject(BuildConfig.SEVER_URL);
                         JSONArray lstMovies = objectMovies.getJSONArray("results");
                         lstArrayMovies = Movie.getArrayListFromJSON(lstMovies);
+                        return true;
 
-                    } catch (JSONException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
+                        return false;
                     }
-
-                   return true;
 
                 }
 
@@ -56,7 +56,7 @@ public class LstMoviesModel implements LstMoviesContract.Model {
                     if (resp){
                         if (lstArrayMovies != null && lstArrayMovies.size() > 0){
                             try {
-                                Thread.sleep(4000);
+                                Thread.sleep(100);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }

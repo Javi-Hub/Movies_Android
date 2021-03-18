@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_nav_all_movies"
+        android:enabled="true"
+        android:title="@string/menu_nav_all"
+        android:icon="@drawable/ic_navigation_movie"/>
+    <item
+        android:id="@+id/menu_nav_rate_movies"
+        android:enabled="true"
+        android:title="@string/menu_nav_rate"
+        android:icon="@drawable/ic_navigation_rate"/>
+    <item
+        android:id="@+id/menu_nav_vote_movies"
+        android:enabled="true"
+        android:title="@string/menu_nav_vote"
+        android:icon="@drawable/ic_navigation_favorite"/>
+</menu>

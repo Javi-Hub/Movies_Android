@@ -7,6 +7,7 @@
     tools:context=".movies.lstMovies.view.List_Movies_Rate_Fragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:clipToPadding="false"
         android:id="@+id/recycler_list_movies"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
