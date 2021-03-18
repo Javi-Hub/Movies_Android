@@ -9,11 +9,15 @@
     <string name="plot">Argumento</string>
     <string name="filter">Filtro</string>
     <string name="card_movie_button_detail">DETALLES</string>
+    <string name="error_text_load_data">Error al cargar datos servidor</string>
+    <string name="error_button_retry">Reintentar</string>
 
     <string-array name="lstSpinner">
-        <item>Todas las películas</item>
+        <item>Todas las peliculas</item>
         <item>Mejor Valoradas</item>
         <item>Mas Votadas</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -55,6 +55,11 @@ public class LstMoviesModel implements LstMoviesContract.Model {
                     //Devolver la lista con los datos obtenidos de la API
                     if (resp){
                         if (lstArrayMovies != null && lstArrayMovies.size() > 0){
+                            try {
+                                Thread.sleep(4000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                             onLstMoviesListener.onResolve(lstArrayMovies);
                         }
                     } else {

@@ -4,11 +4,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Movie {
+public class Movie implements Serializable {
     //Atributos obtenidos desde el archivo JSON
     private static ArrayList<Movie> list;
     private static final String ID = "id";
@@ -114,6 +115,30 @@ public class Movie {
     }
 
     //Método estático que devuelve la lista de películas filtrada por valoración
+    public static ArrayList<Movie> getListFilterRate(ArrayList<Movie> movies) {
+        Collections.sort(movies, new Comparator<Movie>() {
+            @Override
+            public int compare(Movie movie_1, Movie movie_2) {
+                return Integer.parseInt(new String(String.valueOf(movie_2.getRate().compareTo(new String(movie_1.getRate())))));
+            }
+        });
+        return movies;
+    }
+
+    //Método estático que devuelve la lista de películas filtrada por votos
+    public static ArrayList<Movie> getListFilterVote(ArrayList<Movie> movies) {
+        Collections.sort(movies, new Comparator<Movie>() {
+            @Override
+            public int compare(Movie movie_1, Movie movie_2) {
+                // Aqui esta el truco, ahora comparamos movie_2 con movie_1
+                return new Integer(movie_2.getVote()).compareTo(new Integer(movie_1.getVote()));
+            }
+        });
+        return movies;
+    }
+
+
+    //Método estático que devuelve la lista de películas filtrada por valoración
     public static ArrayList<Movie> getListFilterRate() {
         Collections.sort(list, new Comparator<Movie>() {
             @Override
@@ -135,5 +160,7 @@ public class Movie {
         });
         return list;
     }
+
+
 
 }

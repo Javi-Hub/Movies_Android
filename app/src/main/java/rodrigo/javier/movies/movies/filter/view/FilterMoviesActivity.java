@@ -20,7 +20,6 @@ import rodrigo.javier.movies.beans.Movie;
 import rodrigo.javier.movies.movies.filter.adapter.FilterMoviesAdapter;
 import rodrigo.javier.movies.movies.filter.contract.FilterMoviesContract;
 import rodrigo.javier.movies.movies.filter.presenter.FilterMoviesPresenter;
-import rodrigo.javier.movies.movies.lstMovies.adapter.LstMovieAdapter;
 import rodrigo.javier.movies.movies.lstMovies.view.LstMoviesActivity;
 
 public class FilterMoviesActivity extends AppCompatActivity implements FilterMoviesContract.View {
@@ -103,7 +102,7 @@ public class FilterMoviesActivity extends AppCompatActivity implements FilterMov
 
         lManager = new LinearLayoutManager(this);
 
-        recyclerFilterMovies = (RecyclerView) findViewById(R.id.recyclerFilterMovies);
+        recyclerFilterMovies = (RecyclerView) findViewById(R.id.recycler_list_movies);
         recyclerFilterMovies.setHasFixedSize(true);
         recyclerFilterMovies.setLayoutManager(lManager);
 

@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="100"
     android:orientation="vertical"
+    android:gravity="center"
+
     android:background="@color/recyclerview_background"
     tools:context=".movies.lstMovies.view.LstMoviesActivity">
 
     <LinearLayout
+        android:id="@+id/header_list_movies"
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
+        android:layout_height="wrap_content"
         android:weightSum="100"
         android:orientation="horizontal">
 
@@ -38,11 +40,45 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerLstMovies"
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="92"
-        android:padding="10dp"/>
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_error"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_text_load_data"
+            android:gravity="center"
+            android:textSize="@dimen/card_movie_title"
+            android:fontFamily="@string/font_family"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/error_button_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_button_retry"
+            android:layout_marginTop="8dp"/>
+
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/error_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyle"/>
 
 </LinearLayout>
