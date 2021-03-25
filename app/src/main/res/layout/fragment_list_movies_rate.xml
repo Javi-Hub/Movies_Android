@@ -8,7 +8,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:clipToPadding="false"
-        android:id="@+id/recycler_list_movies"
+        android:id="@+id/recycler_list_movies_rate"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"/>

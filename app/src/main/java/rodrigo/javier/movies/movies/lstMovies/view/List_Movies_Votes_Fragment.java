@@ -64,7 +64,7 @@ public class List_Movies_Votes_Fragment extends Fragment {
 
 
     public void initComponents(){
-        recycler = view.findViewById(R.id.recycler_list_movies);
+        recycler = view.findViewById(R.id.recycler_list_movies_vote);
 
     }
 

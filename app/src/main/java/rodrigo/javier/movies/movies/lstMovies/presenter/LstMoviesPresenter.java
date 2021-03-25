@@ -1,5 +1,7 @@
 package rodrigo.javier.movies.movies.lstMovies.presenter;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import rodrigo.javier.movies.beans.Movie;
@@ -20,8 +22,8 @@ public class LstMoviesPresenter
 
         //Obtener el listado de peliculas desde la clase Model
         @Override
-        public void getMovies() {
-            lstMoviesModel.getMoviesWS(new LstMoviesContract.Model.OnLstMoviesListener() {
+        public void getMovies(Context context) {
+            lstMoviesModel.getMoviesWS(context, new LstMoviesContract.Model.OnLstMoviesListener() {
                 //Caso satisfactorio
                 @Override
                 public void onResolve(ArrayList<Movie> movies) {

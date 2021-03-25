@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import rodrigo.javier.movies.R;
 import rodrigo.javier.movies.beans.Movie;
@@ -46,7 +47,7 @@ public class LstMoviesActivity
                 initBottomNavigation();
                 //Comunicar con la clase Presenter desde el View
                 lstMoviesPresenter = new LstMoviesPresenter(this);
-                lstMoviesPresenter.getMovies();
+                lstMoviesPresenter.getMovies(this);
 
                 retryButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -55,7 +56,7 @@ public class LstMoviesActivity
                         errorLayout.setVisibility(View.GONE);
                         //header.setVisibility(View.GONE);
                         frame_container.setVisibility(View.GONE);
-                        lstMoviesPresenter.getMovies();
+                        lstMoviesPresenter.getMovies(LstMoviesActivity.this);
                     }
                 });
 

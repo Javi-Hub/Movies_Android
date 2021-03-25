@@ -2,30 +2,35 @@ package rodrigo.javier.movies.movies.resumeMovie.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 import rodrigo.javier.movies.R;
 import rodrigo.javier.movies.beans.Movie;
-import rodrigo.javier.movies.movies.resumeMovie.contract.ResumeMovieContract;
-import rodrigo.javier.movies.movies.resumeMovie.presenter.ResumeMoviePresenter;
 
-public class ResumeMovieActivity extends AppCompatActivity implements ResumeMovieContract.View
+public class ResumeMovieActivity extends AppCompatActivity
 
         {   //Declaro atributos a mostrar en la pantalla
-            private ResumeMoviePresenter rmPresenter;
             private ImageView imgResumeMovie;
             private TextView txtResumeTitle;
             private TextView txtResumeDate;
             private TextView txtResumeRate;
             private TextView txtResumeLanguage;
             private TextView txtResumeVote;
-            private TextView txtResumeOverview;
+            private TextView txtResumePlot;
+            private FloatingActionButton fab;
 
             private String title = "";
+            private ArrayList<Movie> movies;
             private Movie movie;
 
             @Override
@@ -36,38 +41,46 @@ public class ResumeMovieActivity extends AppCompatActivity implements ResumeMovi
                 initComponents();
                 // Guardar título que proviene al pulsar en la etiqueta seleccionada
                 Bundle details = getIntent().getExtras();
+                movies = (ArrayList<Movie>) getIntent().getSerializableExtra("movies");
+                movie = (Movie) getIntent().getSerializableExtra("movie_set");
                 if (details != null){
                     title = details.getString("title");
                 }
-                //Recoger la pelicula seleccionada
-                movie = new Movie();
-                movie.setTitle(title);
-                //Comunicar con la clase Presenter desde el View
-                rmPresenter = new ResumeMoviePresenter(this);
-                rmPresenter.getMovie(movie);
+
+                selectedMovie();
+
+                fab.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        fab.setColorFilter(Color.RED);
+                    }
+                });
 
              }
 
              //Inicializar los componentes del xml
              public void initComponents(){
-                imgResumeMovie = (ImageView) findViewById(R.id.imgResumeMovie);
-                txtResumeTitle = (TextView) findViewById(R.id.txtResumeTitle);
-                txtResumeDate = (TextView) findViewById(R.id.txtResumeDate);
-                txtResumeLanguage = (TextView) findViewById(R.id.txtResumeLanguage);
-                txtResumeVote= (TextView) findViewById(R.id.txtResumeVote);
-                txtResumeRate = (TextView) findViewById(R.id.txtResumeRate);
-                txtResumeOverview = (TextView) findViewById(R.id.txtResumeOverview);
+                imgResumeMovie = findViewById(R.id.activity_resume_movie_image);
+                txtResumeTitle = findViewById(R.id.activity_resume_movie_title);
+                txtResumeDate =  findViewById(R.id.activity_resume_movie_date);
+                txtResumeLanguage =  findViewById(R.id.activity_resume_movie_language);
+                txtResumeVote= findViewById(R.id.activity_resume_movie_vote);
+                txtResumeRate = findViewById(R.id.activity_resume_movie_rate);
+                txtResumePlot = findViewById(R.id.activity_resume_movie_plot);
+                fab = findViewById(R.id.activity_resume_floating_button);
+                fab.setColorFilter(Color.WHITE);
+                txtResumePlot.setMovementMethod(new ScrollingMovementMethod());
              }
 
-            //Mostrar los datos de la película seleccionada
-            @Override
-            public void selectedMovie(Movie movie) {
-                Picasso.get().load(movie.getImage()).into(imgResumeMovie);
+            public void selectedMovie() {
+                final String URL_IMAGE = "https://image.tmdb.org/t/p/original";
+                Picasso.get().load(URL_IMAGE + movie.getImage()).into(imgResumeMovie);
                 txtResumeTitle.setText(movie.getTitle());
                 txtResumeDate.setText("Fecha: " + movie.getDate());
                 txtResumeLanguage.setText("Idioma: " + movie.getLanguage());
                 txtResumeVote.setText("Votos: " + movie.getVote());
                 txtResumeRate.setText("Valoración: " + movie.getRate());
-                txtResumeOverview.setText(movie.getOverview());
+                txtResumePlot.setText(movie.getOverview());
+                System.out.println(movie.getTitle());
             }
         }

@@ -1,5 +1,7 @@
 package rodrigo.javier.movies.beans;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,16 +18,21 @@ public class Movie implements Serializable {
     private static final String TITLE = "title";
     private static final String DATE = "release_date";
     private static final String RATE = "vote_average";
+    private static final String URL_IMAGE = "https://image.tmdb.org/t/p/original";
     private static final String POSTER_PATH = "poster_path";
     private static final String LANGUAGE = "original_language";
     private static final String VOTE = "vote_count";
     private static final String OVERVIEW = "overview";
     private int id;
     private String title;
+    @SerializedName("release_date")
     private String date;
+    @SerializedName("vote_average")
     private String rate;
+    @SerializedName("poster_path")
     private String image;
     private String language;
+    @SerializedName("vote_count")
     private int vote;
     private String overview;
 
@@ -80,7 +87,7 @@ public class Movie implements Serializable {
 
     /*Convertir el archivo JSON obtenidos desde la API en array de objetos de la clase Movie
      y devolver la lista de objetos*/
-    public static ArrayList<Movie> getArrayListFromJSON(JSONArray lstMovies){
+   /* public static ArrayList<Movie> getArrayListFromJSON(JSONArray lstMovies){
         list = null;
         try {
             if (lstMovies != null && lstMovies.length() > 0){
@@ -107,7 +114,7 @@ public class Movie implements Serializable {
         }
 
         return list;
-    }
+    }*/
 
     //Método estático que devuelve la lista completa de películas sin filtrar
     public static ArrayList<Movie> getList(){
@@ -136,31 +143,6 @@ public class Movie implements Serializable {
         });
         return movies;
     }
-
-
-    //Método estático que devuelve la lista de películas filtrada por valoración
-    public static ArrayList<Movie> getListFilterRate() {
-        Collections.sort(list, new Comparator<Movie>() {
-            @Override
-            public int compare(Movie movie_1, Movie movie_2) {
-                return Integer.parseInt(new String(String.valueOf(movie_2.getRate().compareTo(new String(movie_1.getRate())))));
-            }
-        });
-        return list;
-    }
-
-    //Método estático que devuelve la lista de películas filtrada por votos
-    public static ArrayList<Movie> getListFilterVote() {
-        Collections.sort(list, new Comparator<Movie>() {
-            @Override
-            public int compare(Movie movie_1, Movie movie_2) {
-                // Aqui esta el truco, ahora comparamos movie_2 con movie_1
-                return new Integer(movie_2.getVote()).compareTo(new Integer(movie_1.getVote()));
-            }
-        });
-        return list;
-    }
-
 
 
 }

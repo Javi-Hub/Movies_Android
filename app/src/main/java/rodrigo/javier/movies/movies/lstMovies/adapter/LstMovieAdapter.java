@@ -2,6 +2,7 @@ package rodrigo.javier.movies.movies.lstMovies.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.CharacterData;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 import rodrigo.javier.movies.R;
@@ -42,6 +44,8 @@ public class LstMovieAdapter extends RecyclerView.Adapter<LstMovieAdapter.MovieV
         public TextView date;
         public TextView rate;
         public TextView vote;
+        public ArrayList<Movie> movies;
+        public Movie movie_set;
 
         public MovieViewHolder(View v){
             super(v);
@@ -64,10 +68,12 @@ public class LstMovieAdapter extends RecyclerView.Adapter<LstMovieAdapter.MovieV
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(context, ResumeMovieActivity.class);
-            intent.putExtra("title", title.getText());
+            /*intent.putExtra("title", title.getText());
             intent.putExtra("date", date.getText());
             intent.putExtra("rate", rate.getText());
             intent.putExtra("vote", vote.getText());
+            intent.putExtra("movies", movies);*/
+            intent.putExtra("movie_set", movie_set);
             context.startActivity(intent);
         }
 
@@ -84,12 +90,16 @@ public class LstMovieAdapter extends RecyclerView.Adapter<LstMovieAdapter.MovieV
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         //Pintado de los objetos de la lista
+        final String URL_IMAGE = "https://image.tmdb.org/t/p/original";
+
         Movie movie = lstMovies.get(position);
-        Picasso.get().load(movie.getImage()).into(holder.img);
+        Picasso.get().load(URL_IMAGE + movie.getImage()).into(holder.img);
         holder.title.setText(movie.getTitle());
         holder.date.setText("Fecha: " + movie.getDate());
         holder.rate.setText("Valoración: " + movie.getRate());
         holder.vote.setText("Votos: " + movie.getVote());
+        holder.movies = this.lstMovies;
+        holder.movie_set = movie;
         holder.setOnClickListeners();
     }
 

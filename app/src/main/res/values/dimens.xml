@@ -5,6 +5,7 @@
     <dimen name="card_movie_date">20dp</dimen>
     <dimen name="card_movie_rate">15dp</dimen>
     <dimen name="card_movie_vote">15dp</dimen>
+    <dimen name="card_movie_plot">15dp</dimen>
     <dimen name="card_movie_margin">8dp</dimen>
     <dimen name="card_movie_image">350dp</dimen>
     <dimen name="recycler_name_filter">30sp</dimen>
@@ -12,5 +13,11 @@
     <dimen name="splasText">70dp</dimen>
     <dimen name="row_padding">8dp</dimen>
     <dimen name="card_movie_height_bottom">125dp</dimen>
+    <dimen name="activity_resume_movie_image">300dp</dimen>
+    <dimen name="card_movie_radius">5dp</dimen>
+    <dimen name="card_movie_elevation">5dp</dimen>
+    <dimen name="resume_movie_plot_padding">2dp</dimen>
+    <dimen name="activity_resume_movie_fab_marginRight">20dp</dimen>
+    <dimen name="activity_resume_movie_fab_marginBottom">340dp</dimen>
 
 </resources>

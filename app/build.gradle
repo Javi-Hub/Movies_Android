@@ -19,13 +19,11 @@ android {
     buildTypes {
 
         debug {
-            buildConfigField "String", "SEVER_URL", '"https://api.themoviedb.org/3/movie/popular?" +\n' +
-                    '                    "api_key=f60067a1481cd9254310b37a0022dbd7&language=en-US&page=1"'
+            buildConfigField "String", "SEVER_URL", '"https://api.themoviedb.org/3/movie/popular?api_key=f60067a1481cd9254310b37a0022dbd7&language=es-ES&page=1"'
         }
 
         release {
-            buildConfigField "String", "SEVER_URL", '"https://api.themoviedb.org/3/movie/popular?" +\n' +
-                    '                    "api_key=f60067a1481cd9254310b37a0022dbd7&language=en-US&page=1"'
+            buildConfigField "String", "SEVER_URL", '"https://api.themoviedb.org/3/movie/popular?api_key=f60067a1481cd9254310b37a0022dbd7&language=es-ES&page=1"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -44,6 +42,9 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

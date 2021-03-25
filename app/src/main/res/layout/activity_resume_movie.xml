@@ -1,111 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".movies.resumeMovie.view.ResumeMovieActivity"
-    android:background="@color/background_row"
-    android:weightSum="100">
-
+    android:layout_margin="@dimen/card_movie_margin">
 
     <ImageView
-        android:id="@+id/imgResumeMovie"
+        android:id="@+id/activity_resume_movie_image"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="40"
-        tools:srcCompat="@tools:sample/avatars"
-        android:layout_marginTop="@dimen/spaceBetween"
-        />
+        android:layout_height="@dimen/card_movie_image"
+        android:scaleType="fitXY"
+        tools:srcCompat="@tools:sample/avatars"/>
 
     <TextView
-        android:id="@+id/txtResumeTitle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
+        android:id="@+id/activity_resume_movie_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_resume_movie_image"
         android:layout_marginTop="@dimen/spaceBetween"
-        android:gravity="center"
+        android:gravity="center_vertical"
         android:fontFamily="@string/font_family"
         android:text="@string/card_movie_title"
-        android:autoSizeTextType="uniform"
-        android:textColor="@color/black"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:weightSum="2">
-
-        <TextView
-            android:id="@+id/txtResumeDate"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/card_movie_date"
-            android:textSize="@dimen/textResume"
-            android:textColor="@color/black"/>
-
-        <TextView
-            android:id="@+id/txtResumeRate"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/rate"
-            android:textSize="@dimen/textResume"
-            android:textColor="@color/black"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <TextView
-            android:id="@+id/txtResumeLanguage"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/language"
-            android:textSize="@dimen/textResume"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/txtResumeVote"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/vote"
-            android:textSize="@dimen/textResume"
-            android:textColor="@color/black" />
-
-    </LinearLayout>
+        android:textSize="@dimen/card_movie_title"
+        android:textColor="@color/card_movie_text_color"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/card_movie_margin"/>
 
     <TextView
-        android:id="@+id/txtResumePlot"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
+        android:id="@+id/activity_resume_movie_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_resume_movie_title"
         android:gravity="center"
-        android:text="@string/plot"
+        android:text="@string/card_movie_date"
+        android:textSize="@dimen/card_movie_date"
+        android:textColor="@color/card_movie_text_color"
+        android:layout_marginLeft="@dimen/card_movie_margin"/>
+
+    <TextView
+        android:id="@+id/activity_resume_movie_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_resume_movie_date"
+        android:gravity="center"
+        android:text="@string/resume_movie_language"
         android:textSize="@dimen/textResume"
-        android:textColor="@color/black" />
+        android:textColor="@color/card_movie_text_color"
+        android:layout_marginLeft="@dimen/card_movie_margin"/>
 
     <TextView
-        android:id="@+id/txtResumeOverview"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="30"
+        android:id="@+id/activity_resume_movie_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_resume_movie_language"
         android:gravity="center"
-        android:autoSizeTextType="uniform"
-        android:text="TextView"
-        android:textColor="@color/black"/>
+        android:text="@string/rate"
+        android:textSize="@dimen/card_movie_rate"
+        android:textColor="@color/card_movie_text_color"
+        android:layout_marginLeft="@dimen/card_movie_margin"/>
+
+    <TextView
+        android:id="@+id/activity_resume_movie_vote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_resume_movie_language"
+        android:layout_toRightOf="@id/activity_resume_movie_rate"
+        android:gravity="center"
+        android:text="@string/vote"
+        android:textSize="@dimen/card_movie_rate"
+        android:textColor="@color/card_movie_text_color"
+        android:layout_marginLeft="@dimen/card_movie_margin"/>
+
+    <TextView
+        android:id="@+id/activity_resume_movie_plot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_resume_movie_rate"
+        android:gravity="center_vertical"
+        android:scrollbars="vertical"
+        android:textSize="@dimen/card_movie_plot"
+        android:text="@string/plot"
+        android:textColor="#014EDC"
+        android:layout_marginLeft="@dimen/card_movie_margin"
+        android:layout_marginRight="@dimen/card_movie_margin"
+        android:padding="@dimen/resume_movie_plot_padding"
+        android:background="@color/resume_movie_plot" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/activity_resume_floating_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/card_movie_elevation"
+        android:backgroundTint="@color/card_movie_text_color"
+        android:layout_marginTop="320dp"
+        android:layout_marginRight="@dimen/row_padding"
+        android:layout_alignParentRight="true"
+        app:srcCompat="@drawable/ic_navigation_favorite"
+        app:tint="@color/white"
+        app:borderWidth="0dp"/>
+
+
+</RelativeLayout>
+
+
+<!--
+<ImageView
+android:id="@+id/imgResumeMovie"
+android:layout_width="match_parent"
+android:layout_height="@dimen/activity_resume_movie_image"
+tools:srcCompat="@tools:sample/avatars"
+android:layout_marginTop="@dimen/spaceBetween"
+    />
+
+<TextView
+android:id="@+id/txtResumeTitle"
+android:layout_width="match_parent"
+android:layout_height="0dp"
+android:layout_weight="10"
+android:layout_marginTop="@dimen/spaceBetween"
+android:gravity="center"
+android:fontFamily="@string/font_family"
+
+android:text="@string/card_movie_title"
+android:autoSizeTextType="uniform"
+android:textColor="@color/black"/>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="0dp"
+android:layout_weight="5"
+android:weightSum="2">
+
+<TextView
+    android:id="@+id/txtResumeDate"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:text="@string/card_movie_date"
+    android:textSize="@dimen/textResume"
+    android:textColor="@color/black"/>
+
+<TextView
+    android:id="@+id/txtResumeRate"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:text="@string/rate"
+    android:textSize="@dimen/textResume"
+    android:textColor="@color/black"/>
+</LinearLayout>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="0dp"
+android:layout_weight="5"
+android:orientation="horizontal"
+android:weightSum="2">
+
+<TextView
+    android:id="@+id/txtResumeLanguage"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:text="@string/language"
+    android:textSize="@dimen/textResume"
+    android:textColor="@color/black" />
+
+<TextView
+    android:id="@+id/txtResumeVote"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:text="@string/vote"
+    android:textSize="@dimen/textResume"
+    android:textColor="@color/black" />
 
 </LinearLayout>
+
+<TextView
+android:id="@+id/txtResumePlot"
+android:layout_width="match_parent"
+android:layout_height="0dp"
+android:layout_weight="5"
+android:gravity="center"
+android:text="@string/plot"
+android:textSize="@dimen/textResume"
+android:textColor="@color/black" />
+
+<TextView
+android:id="@+id/txtResumeOverview"
+android:layout_width="match_parent"
+android:layout_height="0dp"
+android:layout_weight="30"
+android:gravity="center"
+android:autoSizeTextType="uniform"
+android:text="TextView"
+android:textColor="@color/black"/>
+-->

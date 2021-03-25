@@ -10,4 +10,6 @@
     <color name="background_row">#F5F5F5</color>
     <color name="recyclerview_background">#e0e0e0</color>
     <color name="card_movie_text_color">#001f58</color>
+    <color name="colorWhiteTransparent">#99ffffff</color>
+    <color name="resume_movie_plot">#F4F5F6</color>
 </resources>
