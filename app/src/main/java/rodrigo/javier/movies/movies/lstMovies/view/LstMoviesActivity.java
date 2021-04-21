@@ -1,24 +1,21 @@
 package rodrigo.javier.movies.movies.lstMovies.view;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import rodrigo.javier.movies.R;
 import rodrigo.javier.movies.beans.Movie;
@@ -39,6 +36,8 @@ public class LstMoviesActivity
 
             private ArrayList<Movie> movies;
 
+            public static String TAG = LstMoviesActivity.class.getSimpleName();
+
             @Override
             protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
@@ -54,7 +53,6 @@ public class LstMoviesActivity
                     public void onClick(View v) {
                         progressBar.setVisibility(View.VISIBLE);
                         errorLayout.setVisibility(View.GONE);
-                        //header.setVisibility(View.GONE);
                         frame_container.setVisibility(View.GONE);
                         lstMoviesPresenter.getMovies(LstMoviesActivity.this);
                     }
@@ -69,6 +67,7 @@ public class LstMoviesActivity
                 frame_container.setVisibility(View.VISIBLE);
                 nav.setVisibility(View.VISIBLE);
                 this.movies = movies;
+                Log.d(TAG, "[succes] Title " + movies.get(0).getTitle());
                 setFragment(List_Movies_Fragment.newInstance(movies));
             }
 
@@ -86,6 +85,7 @@ public class LstMoviesActivity
                 progressBar = findViewById(R.id.activity_lst_movies_loading_progressBar);
                 retryButton = findViewById(R.id.button_retry);
                 nav = findViewById(R.id.activity_lst_movies_bottom_navigation);
+
             }
 
             public void setFragment(Fragment fragment){
@@ -98,12 +98,15 @@ public class LstMoviesActivity
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.menu_nav_all_movies:
+                                nav.setSelected(true);
                                 setFragment(List_Movies_Fragment.newInstance(new ArrayList<>(movies)));
                                 break;
                             case R.id.menu_nav_rate_movies:
+                                nav.setSelected(true);
                                 setFragment(List_Movies_Rate_Fragment.newInstance(new ArrayList<>(movies)));
                                 break;
                             case R.id.menu_nav_vote_movies:
+                                nav.setSelected(true);
                                 setFragment(List_Movies_Votes_Fragment.newInstance(new ArrayList<>(movies)));
                                 break;
                         }
@@ -114,45 +117,3 @@ public class LstMoviesActivity
             }
 
         }
-
-//private LinearLayout header;
-//private Spinner spinFilter;
-
-//*************** En el onCreate **********************
-/*//Adaptador para capturar la selección desde el Spinner
-                ArrayAdapter<CharSequence> spAdapter = ArrayAdapter.createFromResource(this,
-                        R.array.lstSpinner, android.R.layout.simple_spinner_dropdown_item);
-                spinFilter.setAdapter(spAdapter);
-
-                //Capturar la selección pulsada en el spinner
-                spinFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        if (parent.getSelectedItem().toString().equals("Mejor Valoradas")){
-                            setFragment(List_Movies_Rate_Fragment.newInstance(new ArrayList<>(movies)));
-
-                        } else if(parent.getSelectedItem().toString().equals("Mas Votadas")){
-                            setFragment(List_Movies_Votes_Fragment.newInstance(new ArrayList<>(movies)));
-
-                        } else if(parent.getSelectedItem().toString().equals("Todas las peliculas")) {
-                            setFragment(List_Movies_Fragment.newInstance(new ArrayList<>(movies)));
-                        }
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });*/
-
-//************ En el success***************
-//header.setVisibility(View.VISIBLE);
-
-//***************En el error **********
-//header.setVisibility(View.GONE);
-/*Toast.makeText(this, "Fallo conexión con el servidor," +
-                        " al cargar el listado de peliculas", Toast.LENGTH_SHORT).show();*/
-
-//********** En el initComponents ***************
-//spinFilter = (Spinner) findViewById(R.id.spinFilter);
-//header = findViewById(R.id.activity_lst_movies_header);

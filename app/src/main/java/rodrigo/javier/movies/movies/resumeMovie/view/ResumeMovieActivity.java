@@ -1,13 +1,14 @@
 package rodrigo.javier.movies.movies.resumeMovie.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
@@ -30,8 +31,11 @@ public class ResumeMovieActivity extends AppCompatActivity
             private FloatingActionButton fab;
 
             private String title = "";
+            private boolean click = false;
             private ArrayList<Movie> movies;
             private Movie movie;
+
+            public static String TAG = ResumeMovieActivity.class.getSimpleName();
 
             @Override
             protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class ResumeMovieActivity extends AppCompatActivity
                 Bundle details = getIntent().getExtras();
                 movies = (ArrayList<Movie>) getIntent().getSerializableExtra("movies");
                 movie = (Movie) getIntent().getSerializableExtra("movie_set");
+                Log.d(TAG, "[getMovie] Title " + movie.getTitle());
                 if (details != null){
                     title = details.getString("title");
                 }
@@ -52,7 +57,9 @@ public class ResumeMovieActivity extends AppCompatActivity
                 fab.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        fab.setColorFilter(Color.RED);
+                        click = !click;
+                        int color = (click) ? Color.RED : Color.WHITE;
+                        fab.setColorFilter(color);
                     }
                 });
 

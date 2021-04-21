@@ -2,12 +2,11 @@ package rodrigo.javier.movies.movies.lstMovies.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,9 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.CharacterData;
-
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 import rodrigo.javier.movies.R;
@@ -33,6 +29,7 @@ public class LstMovieAdapter extends RecyclerView.Adapter<LstMovieAdapter.MovieV
         this.lstMovies = lstMovies;
     }
 
+    public static String TAG = LstMovieAdapter.class.getSimpleName();
 
     //ViewHolder -> Tantos elementos como objetos quiera mostrar en la fila
     public static class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -68,12 +65,8 @@ public class LstMovieAdapter extends RecyclerView.Adapter<LstMovieAdapter.MovieV
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(context, ResumeMovieActivity.class);
-            /*intent.putExtra("title", title.getText());
-            intent.putExtra("date", date.getText());
-            intent.putExtra("rate", rate.getText());
-            intent.putExtra("vote", vote.getText());
-            intent.putExtra("movies", movies);*/
             intent.putExtra("movie_set", movie_set);
+            Log.d(TAG, "[movie_set] Title " + movie_set.getTitle());
             context.startActivity(intent);
         }
 

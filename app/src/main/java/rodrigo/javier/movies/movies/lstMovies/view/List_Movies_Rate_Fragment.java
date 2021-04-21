@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,8 @@ public class List_Movies_Rate_Fragment extends Fragment {
 
     private static final String MOVIES = "param1";
 
+    public static String TAG = List_Movies_Rate_Fragment.class.getSimpleName();
+
     public List_Movies_Rate_Fragment() {
     }
 
@@ -45,6 +48,7 @@ public class List_Movies_Rate_Fragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             movies = (ArrayList<Movie>) getArguments().getSerializable(MOVIES);
+            Log.d(TAG, "[getArguments] Title " + movies.get(0).getTitle());
         }
     }
 

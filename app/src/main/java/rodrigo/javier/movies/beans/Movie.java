@@ -85,36 +85,6 @@ public class Movie implements Serializable {
         this.overview = overview;
     }
 
-    /*Convertir el archivo JSON obtenidos desde la API en array de objetos de la clase Movie
-     y devolver la lista de objetos*/
-   /* public static ArrayList<Movie> getArrayListFromJSON(JSONArray lstMovies){
-        list = null;
-        try {
-            if (lstMovies != null && lstMovies.length() > 0){
-                list = new ArrayList<Movie>();
-            }
-
-            for (int i = 0; i < lstMovies.length(); i++) {
-                JSONObject json_data = lstMovies.getJSONObject(i);
-                Movie movie = new Movie();
-                movie.setId(json_data.getInt(ID));
-                movie.setTitle(json_data.getString(TITLE));
-                movie.setDate(json_data.getString(DATE));
-                movie.setRate(json_data.getString(RATE));
-                movie.setImage("https://image.tmdb.org/t/p/original" + json_data.getString(POSTER_PATH));
-                movie.setLanguage((json_data.getString(LANGUAGE)));
-                movie.setVote(json_data.getInt(VOTE));
-                movie.setOverview(json_data.getString(OVERVIEW));
-
-                list.add(movie);
-
-            }
-        } catch (JSONException e){
-                e.printStackTrace();
-        }
-
-        return list;
-    }*/
 
     //Método estático que devuelve la lista completa de películas sin filtrar
     public static ArrayList<Movie> getList(){
